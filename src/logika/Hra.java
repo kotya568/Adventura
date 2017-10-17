@@ -12,7 +12,8 @@ package logika;
  * @version    pro školní rok 2016/2017
  */
 
-public class Hra {
+public class Hra implements IHra {
+    
     protected static final String IMAGE_PATH = "planek.jpg";
     private final SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private final HerniPlan herniPlan;

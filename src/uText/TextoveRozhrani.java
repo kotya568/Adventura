@@ -5,6 +5,7 @@ package uiText;
 import java.io.*;
 import java.util.Scanner;
 import logika.Hra;
+import logika.IHra;
 /**
  * Class TextoveRozhrani
  * 
@@ -17,12 +18,12 @@ import logika.Hra;
  */
 
 public class TextoveRozhrani {
-    private Hra hra;
+    private IHra hra;
 
     /**
      *  Vytváří hru.
      */
-    public TextoveRozhrani(Hra hra) {
+    public TextoveRozhrani(IHra hra) {
         this.hra = hra;
     }
 

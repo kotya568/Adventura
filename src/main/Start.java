@@ -24,7 +24,7 @@ public class Start
      */
     public static void main(String[] args)
     {
-        Hra hra = new Hra();
+        IHra hra = new Hra();
         TextoveRozhrani ui = new TextoveRozhrani(hra);
         
         if (args.length < 1) {
