@@ -13,7 +13,7 @@ import logika.IHra;
  * Tato třída vytváří instanci třídy Hra, která představuje logiku aplikace.
  * Čte vstup zadaný uživatelem a předává tento řetězec logice a vypisuje odpověď logiky na konzoli.
  *
- * @author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
+ * @author     Jarmila Pavlickova
  * @version    ZS 2016/2017
  */
 

@@ -5,6 +5,7 @@
  */
 package main;
 
+
 import javafx.scene.control.TextField;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,6 +14,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
@@ -49,6 +52,12 @@ public class Main extends Application {
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
         borderPane.setBottom(dolniPanel);
+        
+        FlowPane obrazekPane = new FlowPane();
+        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),400 , 400 ,false, false));
+        obrazekPane.getChildren().add(obrazek);
+        obrazekPane.setPrefSize(300,300);
+        
         
         zadejPrikazTextField.setOnAction(new EventHandler <ActionEvent>(){
                 
@@ -95,6 +104,8 @@ public class Main extends Application {
         primaryStage.setTitle("Moje adventura");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        zadejPrikazTextField.requestFocus();
     }
 
     /**
@@ -116,6 +127,6 @@ public class Main extends Application {
         }
         }
         
-        
+                      
     }
     
