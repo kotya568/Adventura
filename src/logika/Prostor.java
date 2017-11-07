@@ -25,7 +25,10 @@ public class Prostor implements ISeznamVeci {
     private String popis;
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;
-
+    
+    
+    private double posX;
+    private double posY;
     /**
      * Vytvoření prostoru se zadaným popisem.
      * před domem"
@@ -34,9 +37,12 @@ public class Prostor implements ISeznamVeci {
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, double posX, double posY) {
         this.nazev = nazev;
         this.popis = popis;
+        this.posX = posX;
+        this.posY = posY;
+       
         vychody = new HashSet<>();
         veci = new HashMap<>();
     }
@@ -225,5 +231,19 @@ public class Prostor implements ISeznamVeci {
             return vec;
         }
         return null;
+    }
+
+    /**
+     * @return the posX
+     */
+    public double getPosX() {
+        return posX;
+    }
+
+    /**
+     * @return the posY
+     */
+    public double getPosY() {
+        return posY;
     }
 }

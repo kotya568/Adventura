@@ -6,6 +6,7 @@
 package main;
 
 
+import UI.Mapa;
 import javafx.scene.control.TextField;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -30,12 +31,19 @@ import uiText.TextoveRozhrani;
  */
 public class Main extends Application {
     
+    
+    private Mapa mapa; 
+    
     @Override
     public void start(Stage primaryStage) {
           IHra hra = new Hra();
+          mapa= new Mapa(hra);
+          
          //TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
         // textoveRozhrani.hraj();
         BorderPane borderPane = new BorderPane();
+        
+        borderPane.setLeft(mapa);
         
         TextArea centerText = new TextArea();
         //Text centerText = new Text();
@@ -53,10 +61,8 @@ public class Main extends Application {
         dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
         borderPane.setBottom(dolniPanel);
         
-        FlowPane obrazekPane = new FlowPane();
-        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),400 , 400 ,false, false));
-        obrazekPane.getChildren().add(obrazek);
-        obrazekPane.setPrefSize(300,300);
+        
+        ;
         
         
         zadejPrikazTextField.setOnAction(new EventHandler <ActionEvent>(){
