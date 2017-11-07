@@ -5,9 +5,8 @@
  */
 package main;
 
-
 import UI.Mapa;
-import javafx.scene.control.TextField;
+import UI.MenuPole;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,104 +14,88 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logika.Hra;
 import logika.IHra;
 import uiText.TextoveRozhrani;
+
 /**
  *
-
+ * @author xzenj02
  */
 public class Main extends Application {
-    
-    
-    private Mapa mapa; 
+
+    private Mapa mapa;
+    private MenuPole menu;
     
     @Override
     public void start(Stage primaryStage) {
-          IHra hra = new Hra();
-          mapa= new Mapa(hra);
-          
-         //TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
-        // textoveRozhrani.hraj();
+
+        IHra hra = new Hra();
+        mapa = new Mapa(hra);
+        menu = new MenuPole();
+        
         BorderPane borderPane = new BorderPane();
         
-        borderPane.setLeft(mapa);
-        
         TextArea centerText = new TextArea();
-        //Text centerText = new Text();
         centerText.setText(hra.vratUvitani());
-        centerText.setEditable(false); //nejde enterovat - commit příkaz
-        
+        centerText.setEditable(false);
         borderPane.setCenter(centerText);
-        Label zadejPrikazLabel = new Label ("Zadej prikaz");
+        
+        Label zadejPrikazLabel = new Label("Zadej prikaz");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         
-        TextField zadejPrikazTextField = new TextField ("Sem zadej prikaz");
+        TextField zadejPrikazTextField = new TextField("Sem zadej prikaz");
+        
+        zadejPrikazTextField.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
+                String zadanyPrikaz = zadejPrikazTextField.getText();
+                String odpoved = hra.zpracujPrikaz(zadanyPrikaz);
+                
+                centerText.appendText("\n" + zadanyPrikaz + "\n");
+                centerText.appendText("\n" + odpoved + "\n");
+                
+                zadejPrikazTextField.setText("");
+                
+                if(hra.konecHry()){
+                    zadejPrikazTextField.setEditable(false);
+                }
+                
+            }
+        });
         
         FlowPane dolniPanel = new FlowPane();
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
+        
+        
+        //panel prikaz
         borderPane.setBottom(dolniPanel);
+        //obrazek s mapou
+        borderPane.setLeft(mapa);
+        //menu adventury
+        borderPane.setTop(menu);
         
-        
-        ;
-        
-        
-        zadejPrikazTextField.setOnAction(new EventHandler <ActionEvent>(){
-                
-            @Override
-                public void handle(ActionEvent event) {
-                    String zadnyPrikaz = zadejPrikazTextField.getText();
-                    String odpoved = hra.zpracujPrikaz(zadnyPrikaz);
-                            centerText.appendText("\n\n" + zadnyPrikaz +"\n\n");
-                            centerText.appendText("\n\n" + odpoved +"\n\n");
-                              
-                          zadejPrikazTextField.setText("");
-                          if (hra.konecHry()) {
-                              zadejPrikazTextField.setEditable(false); 
-                          }
-                         
-                          }
-                
-                });
-        
-     
-        
-        
-    
-        
-        
-        /*Button btn = new Button();
-        btn.setText("Start adventura'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-               IHra hra = new Hra();
-               TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
-               textoveRozhrani.hraj();
-            }
-        });
-        */
-        //StackPane root = new StackPane();
-        //mohu vkládat objekt do objektu (např. VBOX do border pane TOP)
-        //root.getChildren().add(btn);
-        
-        Scene scene = new Scene(borderPane, 400, 350);
-        
-        primaryStage.setTitle("Moje adventura");
+        Scene scene = new Scene(borderPane, 800, 650);
+
+        primaryStage.setTitle("Moje Adventura");
         primaryStage.setScene(scene);
         primaryStage.show();
         
         zadejPrikazTextField.requestFocus();
     }
+
 
     /**
      * @param args the command line arguments

@@ -16,35 +16,30 @@ import utils.Observer;
 
 /**
  *
- * @author krij02
+ * @author xzenj02
  */
 public class Mapa extends AnchorPane implements Observer{
-    
-    
-    
+
     private IHra hra;
     private Circle tecka;
     
-    
     public Mapa(IHra hra){
-        this.hra=hra;
+        this.hra = hra;
         hra.getHerniPlan().registerObserver(this);
         init();
     }
-        
-     public void init(){
-         ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),400 , 400 ,false, false));
-         Circle tecka = new Circle(10, Paint.valueOf("red"));
-         this.getChildren().addAll(obrazek, tecka);
-         update();
-     }
-     
-     
+    
+    private void init(){
+        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.jpg"),300,300,false,false));
+        tecka = new Circle(10, Paint.valueOf("red"));
+        this.getChildren().addAll(obrazek, tecka);
+        update();
+    }
+    
     @Override
     public void update() {
         this.setTopAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosY());
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
-
     }
     
 }
