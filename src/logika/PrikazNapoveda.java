@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  *  
  */
 class PrikazNapoveda implements IPrikaz {
@@ -31,8 +31,8 @@ class PrikazNapoveda implements IPrikaz {
      */
     @Override
     public String proved(String... parametry) {
-        return "\n Tvym ukolem je vysvobodit prince.\n"
-        + "Cestou muzes vkladat veci do kabelky a pote je snist.\n"
+        return "\n Tvym ukolem je zahranit svuj dum ped bilyma chodci .\n"
+        + "Cestou muzes vkladat veci do batohu a pote je snist, vylozit, kombinovat.\n"
         + "\n"
         + "Muzes zadat tyto prikazy:\n"
         + platnePrikazy.vratNazvyPrikazu();

@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazVyhod implementuje pro hru příkaz vyhod.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class PrikazVyhod implements IPrikaz
 {
@@ -24,6 +24,7 @@ public class PrikazVyhod implements IPrikaz
 
     /**
      * Provádí příkaz vyhod. Zkouší vyhodit věc z batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {

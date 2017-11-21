@@ -17,7 +17,7 @@ import java.util.HashMap;
  * si prostor ukládá odkaz na sousedící prostor.
  *
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
 public class Prostor implements ISeznamVeci {
 
@@ -36,6 +36,8 @@ public class Prostor implements ISeznamVeci {
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param posX
+     * @param posY
      */
     public Prostor(String nazev, String popis, double posX, double posY) {
         this.nazev = nazev;
@@ -179,12 +181,19 @@ public class Prostor implements ISeznamVeci {
         return Collections.unmodifiableCollection(vychody);
     }
 
+    /**
+     *
+     * @param nazev
+     * @return
+     */
     public boolean obsahujeVec(String nazev) {
         return veci.containsKey(nazev);
     }
 
     /**
      * Metoda vloží věc do prostoru.
+     * @param vec
+     * @return 
      */
     public Vec vlozVec(Vec vec) {
         veci.put(vec.getNazev(),vec);
@@ -196,6 +205,8 @@ public class Prostor implements ISeznamVeci {
 
     /**
      * Metoda odebere věc z prostoru.
+     * @param nazev
+     * @return 
      */
     public Vec odeberVec(String nazev) {
         return veci.remove(nazev); 
@@ -203,6 +214,8 @@ public class Prostor implements ISeznamVeci {
 
     /**
      * Metoda vrátí "nic" při odebrání z prostoru.
+     * @param vec
+     * @return 
      */
     public Vec odeberVec(Vec vec) {
         return null;
@@ -210,6 +223,8 @@ public class Prostor implements ISeznamVeci {
 
     /**
      * Metoda vrací hodnotu odpovídající zadanému klíči.
+     * @param nazev
+     * @return 
      */
     public Vec vratVec(String nazev){
         return veci.get(nazev);
@@ -217,6 +232,8 @@ public class Prostor implements ISeznamVeci {
 
     /**
      * Metoda vrátí "nic", je-li věc odebraná z prostoru.
+     * @param vec
+     * @return 
      */
     public Vec odebranaVec(Vec vec) {
         return null;
@@ -224,6 +241,8 @@ public class Prostor implements ISeznamVeci {
 
     /**
      * Metoda umožní sníst věc.
+     * @param vec
+     * @return 
      */
     public Vec snezVec(Vec vec) {
         veci.put(vec.getNazev(),vec);
@@ -245,5 +264,29 @@ public class Prostor implements ISeznamVeci {
      */
     public double getPosY() {
         return posY;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getY() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Double getX() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Object getVeci() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

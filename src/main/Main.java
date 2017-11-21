@@ -5,6 +5,9 @@
  */
 package main;
 
+import UI.OknoBatoh;
+import UI.OknoProstor;
+import UI.MenuPole;
 import UI.Mapa;
 import UI.MenuPole;
 import javafx.application.Application;
@@ -25,27 +28,44 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logika.Hra;
 import logika.IHra;
-import uiText.TextoveRozhrani;
+import uText.TextoveRozhrani;
 
 /**
- *
- * @author xzenj02
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class Main extends Application {
 
     private Mapa mapa;
     private MenuPole menu;
+    private IHra hra;
+    private TextArea centerText;
+
+    /**
+     *
+     */
+    public OknoProstor oknoProstor;
+    private OknoBatoh oknoBatoh;
+    private Stage primaryStage;
     
+    /**
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
 
-        IHra hra = new Hra();
+        this.primaryStage = primaryStage;
+        hra = new Hra();
         mapa = new Mapa(hra);
-        menu = new MenuPole();
+        menu = new MenuPole(this);
         
         BorderPane borderPane = new BorderPane();
         
-        TextArea centerText = new TextArea();
+        oknoProstor = new OknoProstor(hra.getHerniPlan());
+        oknoBatoh = new OknoBatoh(hra.getHerniPlan().getBatoh(), hra.getHerniPlan());
+        
+        centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
         borderPane.setCenter(centerText);
@@ -96,16 +116,14 @@ public class Main extends Application {
         zadejPrikazTextField.requestFocus();
     }
 
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        if(args.length == 0){
+        if (args.length == 0) {
             launch(args);
-        }
-        else {
-            if(args[0].equals("-text")) {
+        } else {
+            if (args[0].equals("-text")) {
                 IHra hra = new Hra();
                 TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
                 textoveRozhrani.hraj();
@@ -114,8 +132,23 @@ public class Main extends Application {
                 System.exit(1);
             }
         }
-        }
-        
-                      
     }
-    
+
+    /**
+     *
+     */
+    public void novaHra() {
+        hra = new Hra();
+        centerText.setText(hra.vratUvitani());
+        //to same pro vsechny observery
+        mapa.novaHra(hra);
+    }
+
+    /**
+     * @return the primaryStage
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+}

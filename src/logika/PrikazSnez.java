@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazSnez implementuje pro hru příkaz snez.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  *  
  */
 public class PrikazSnez implements IPrikaz
@@ -16,8 +16,8 @@ public class PrikazSnez implements IPrikaz
 
     /**
      *  Konstruktor třídy
-     *  
-     * @param plan herní plán, ve kterém se bude ve hře "jíst" 
+     * 
+     * @param hra
      */    
     public PrikazSnez(Hra hra) {
         this.plan = hra.getHerniPlan();
@@ -26,6 +26,7 @@ public class PrikazSnez implements IPrikaz
 
     /**
      * Provádí příkaz sněz. Zkouší sníst věci, které jsou už vložené v batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {
@@ -68,6 +69,7 @@ public class PrikazSnez implements IPrikaz
 
     /**
      * Metoda zajišťuje, že věc lze sníst.
+     * @return 
      */
     public String jed(){
         if(plan.getBatoh().obsahujeVec("jed")){
@@ -80,6 +82,7 @@ public class PrikazSnez implements IPrikaz
 
     /**
      * Metoda zajišťuje, že věc lze sníst.
+     * @return 
      */
     public String otraveny_dort(){
         if(plan.getBatoh().obsahujeVec("otraveny_dort")){

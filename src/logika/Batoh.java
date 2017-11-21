@@ -1,10 +1,14 @@
 package logika;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import utils.SubjektProstor;
+import utils.SubjektBatoh;
 
 /*******************************************************************************
- * Třída Batoh - popisuje kabelku.
+ * Třída Batoh - popisuje batoh.
  * 
  *  Tato třída je součástí jednoduché textové hry.
  * "Batoh" reprezentuje "úložný prostor" pro sebrané věci (příkazem seber). 
@@ -13,11 +17,13 @@ import java.util.HashMap;
  *  odebrat, resp. je "vymazat" příkazem vyhod.
  *  
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
 public class Batoh implements ISeznamVeci
 {
     private Map<String, Vec> veci; //klíč a k němu přiřazená hodnota
+    private final int KAPACITA = 5; 
+
 
     /***************************************************************************
      * Konstruktor třídy
@@ -25,6 +31,7 @@ public class Batoh implements ISeznamVeci
     public Batoh()
     {
         veci = new HashMap<>(); //vytvořená nová mapa, do které se vkládají předměty
+ 
     }
 
     /**
@@ -43,6 +50,8 @@ public class Batoh implements ISeznamVeci
 
     /**
      * Metoda rozhodne, zda v kabelce věc je.
+     * @param nazev
+     * @return 
      */
     public boolean obsahujeVec(String nazev) {
         return veci.containsKey(nazev); //pokud je klíč obsažen v mapě, vrací true
@@ -50,6 +59,8 @@ public class Batoh implements ISeznamVeci
 
     /**
      * Metoda vloží věc do kabelky.
+     * @param vec
+     * @return 
      */
     public Vec vlozVec(Vec vec) {
         veci.put(vec.getNazev(),vec); //vloží klíč a hodnotu do mapy
@@ -58,14 +69,25 @@ public class Batoh implements ISeznamVeci
     }
 
     /**
-     * Metoda odebere věc z kabelky.
+     * Metoda odebere věc z batohu.
+     * @param nazev
+     * @return 
      */
     public Vec odeberVec(String nazev) {
         return veci.remove(nazev); //v mapě se zrusí odpovídající klíč s hodnotou
     }
+    
+     /**
+     * @return Kolik zbývá místa v batohu.
+     */
+    public int getKapacita() {
+        return (KAPACITA - veci.size());
+    }
 
     /**
      * Metoda odebere věc z kabelky.
+     * @param vec
+     * @return 
      */
     public Vec odeberVec(Vec vec) {
         return null;
@@ -73,6 +95,8 @@ public class Batoh implements ISeznamVeci
 
     /**
      * Metoda vrátí "nic", byla-li věc snězena
+     * @param vec
+     * @return 
      */
     public Vec snezVec(Vec vec) {
         return null;
@@ -80,9 +104,20 @@ public class Batoh implements ISeznamVeci
 
     /**
      * Metoda vrátí "nic", byla-li věc odebrána z kabelky.
+     * @param vec
+     * @return 
      */
     public Vec odebranaVec(Vec vec) {
         return null;
     }
+
+    /**
+     *
+     * @return
+     */
+    public Object getVeci() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

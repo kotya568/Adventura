@@ -5,9 +5,9 @@ package logika;
  *  Tato třída je součástí jednoduché textové hry.
  *  
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
-class PrikazKonec implements IPrikaz {
+    public class PrikazKonec implements IPrikaz {
     private static final String NAZEV = "konec";
     private Hra hra;
 

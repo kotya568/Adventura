@@ -5,8 +5,8 @@ package logika;
 /**
  * Rozhraní které musí implementovat hra, je na ně navázáno uživatelské rozhraní
  *
- * @author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Jan Riha
- * @version    LS 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public interface IHra
 {

@@ -6,15 +6,26 @@
 package utils;
 
 /**
- *
- * @author krij02
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public interface Subject {
     
+    /**
+     *
+     * @param observer
+     */
     void registerObserver (Observer observer);
     
+    /**
+     *
+     * @param observer
+     */
     void deleteObserver (Observer observer);
     
+    /**
+     *
+     */
     void notifyAllObservers ();
     
 }

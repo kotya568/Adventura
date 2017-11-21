@@ -12,7 +12,7 @@ import java.util.Map;
  *
  *  Tato třída je součástí jednoduché textové hry.
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
 class SeznamPrikazu  {
     // mapa pro uložení přípustných příkazů

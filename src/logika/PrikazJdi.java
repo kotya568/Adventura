@@ -5,7 +5,7 @@ package logika;
  *  Tato třída je součástí jednoduché textové hry.
  *  
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  *  
  */
 class PrikazJdi implements IPrikaz {
@@ -51,11 +51,11 @@ class PrikazJdi implements IPrikaz {
         else {
             if(sousedniProstor.getNazev().equals("dum") && !plan.muzeJitDomu()){
                 hra.setKonecHry(true);
-                return "Prohral jsi. Zabili tebe bile chodce...";
+                return "Prohral jsi. Zabili te bili chodci...";
             }
             if(sousedniProstor.getNazev().equals("dum") && plan.muzeJitDomu()){
                 hra.setKonecHry(true);
-                return "Gratuluji. Bile chodci jsou mrtve ";
+                return "Gratuluji. Bili chodci jsou mrtvi ";
             }
             plan.setAktualniProstor(sousedniProstor);
             return sousedniProstor.dlouhyPopis();

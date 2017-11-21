@@ -9,11 +9,14 @@ package logika;
  *  Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  * 
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
 
 public class Hra implements IHra {
     
+    /**
+     *
+     */
     protected static final String IMAGE_PATH = "planek.jpg";
     private final SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private final HerniPlan herniPlan;
@@ -45,9 +48,9 @@ public class Hra implements IHra {
     public String vratUvitani() {
         return "Vitej!\n" +
         "Tvym hlavnim ukolem je zaсhranit svuj dum pred bilyma chodci.\n" +
-        "Z vezeni se dostnes k carodejnici ktera tobe rekne jak zabit bily chodci . \n" +
-        "Dostanes od ni ukol . Dort je nahazi v jeskyni u matky jeho potrebujes zkombinovat s jedem. \n" +
-        "Jenom tak muzes zabit kralovnu kdyz ona sni dort s jedem. \n" +
+        "Z vezeni se dostnes k carodejnici, ktera tobe rekne jak zabit bile chodce. \n" +
+        "Pak dostanes ukol od carodejnice. Napoveda Dort se nahazi v jeskyni u matky, jeho potrebujes zkombinovat s jedem. \n" +
+        "Jenom takovym zpusobem muzes zabit kralovnu, kdyz ona sni dort s jedem. \n" +
         "Predem bys vsak mel najit nejakou vyzbroj, abys mel proti bilym chodcum vubec sanci. \n" +
         "Promluv si s kazdou postavu, treba se neco dozvis.\n" +
         "Napiste 'napoveda', pokud si nevite rady, jak hrat dal.\n\n" +
