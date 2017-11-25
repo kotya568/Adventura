@@ -1,5 +1,5 @@
 
-package uiText;
+package uText;
 
 
 import java.io.*;
@@ -13,7 +13,7 @@ import logika.IHra;
  * Tato třída vytváří instanci třídy Hra, která představuje logiku aplikace.
  * Čte vstup zadaný uživatelem a předává tento řetězec logice a vypisuje odpověď logiky na konzoli.
  *
- * @author     Jarmila Pavlickova
+ * @author     Jekaterina Krivenchuk
  * @version    ZS 2016/2017
  */
 
@@ -22,6 +22,7 @@ public class TextoveRozhrani {
 
     /**
      *  Vytváří hru.
+     * @param hra
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;
@@ -48,6 +49,10 @@ public class TextoveRozhrani {
         System.out.println(hra.vratEpilog());
     }
     
+    /**
+     *
+     * @param soubor
+     */
     public void hrajZeSouboru(String soubor) {
         System.out.println("Nacitam prikazy ze souboru " + soubor);
         

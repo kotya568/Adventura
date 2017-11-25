@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Map;
 import utils.Observer;
 import utils.Subject;
-
 /**
- *  Class HerniPlan - třída představující mapu a stav adventury.
+ *  Trida HerniPlan - třída představující mapu a stav adventury.
  * 
  *  Tato třída inicializuje prvky ze kterých se hra skládá:
  *  vytváří všechny prostory,
@@ -16,12 +15,13 @@ import utils.Subject;
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  *
  * @author     Jekaterina Krivenchuk
- * @version    pro školní rok 2016/2017
+ * @version    ZS 2017
  */
-public class HerniPlan implements Subject {
+public class HerniPlan implements Subject{
     
     private Prostor aktualniProstor;
     private Prostor viteznyProstor;
+    private Hra hra;
     
     
     private final List<Observer> listObserveru = new ArrayList<Observer>();
@@ -29,19 +29,33 @@ public class HerniPlan implements Subject {
     private Batoh batoh;
     private int pokus; //číslo pokusu
     private Map<String, Prostor> mapa;
+
+    /**
+     *
+     */
     protected State state = State.Zacatek;
-    protected boolean princeznaJeZiva = true;
+
+    /**
+     *
+     */
+    protected boolean kralovnaJeZiva = true;
+
+    /**
+     *
+     */
     protected boolean dostalJed = false;
 
     
     /**
      *  Konstruktor, který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví vezeni.
+     * @param hra
      */
-    public HerniPlan() {
+    public HerniPlan(Hra hra) {
         batoh = new Batoh();
         pokus = 0;
         mapa = new HashMap<>();
+        this.hra = hra;
         zalozProstoryHry();
     }
 
@@ -51,20 +65,21 @@ public class HerniPlan implements Subject {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor kralovsky_dvur = new Prostor("kralovsky_dvur", "Hezky zamek a kralovna", 110, 40);
+        Prostor kralovsky_dvur = new Prostor("kralovsky_dvur", "Hezky zamek a kralovna", 120 ,200);
         mapa.put("kralovsky_dvur", kralovsky_dvur);
-        Prostor vezeni = new Prostor("vezeni", "Strasne a mokre vezeni , ktere dohleda straznik", 15 ,74);
+        Prostor vezeni = new Prostor("vezeni", "Strasne a mokre vezeni, ktere dohlida straznik", 220 ,300);
         mapa.put("vezeni", vezeni);
-        Prostor les = new Prostor("les","Les, ve kterem bydli carodejnce",60,10);
+        Prostor les = new Prostor("les","Les, ve kterem bydli carodejnce",300 ,200);
         mapa.put("les", les);
-        Prostor dum = new Prostor("dum","Tvuj rodny domov zachyceny bilymi chodcsi",97,40);  
+        Prostor dum = new Prostor("dum","Tvuj rodny domov, ktery je zachycen bilymi chodci",450 ,50);  
         mapa.put("dum", dum);  
-        Prostor jeskyne = new Prostor("jeskyne","Tady sidli matka ",55,5);
+        Prostor jeskyne = new Prostor("jeskyne","Tady sidli matka ",450 ,200);
         mapa.put("jeskyne", jeskyne);
 
         viteznyProstor = dum;
 
         // přiřazují se průchody mezi prostory (sousedící prostory)
+        vezeni.setVychod(les);
         les.setVychod(jeskyne);
         les.setVychod(kralovsky_dvur);
         kralovsky_dvur.setVychod(les);
@@ -72,13 +87,15 @@ public class HerniPlan implements Subject {
         jeskyne.setVychod(dum);
 
         //věci, které lze vložit do batohu        
-        jeskyne.vlozVec(new Vec("dort"));
+        jeskyne.vlozVec(new Vec("dort","dort.jpg"));
 
         aktualniProstor = vezeni;  // hra začíná ve vezeni     
     }
 
     /**
      * Metoda vraci odkaz na instanci prostoru podle nazvu
+     * @param name
+     * @return 
      */
     public Prostor getProstor(String name){
         return mapa.get(name);
@@ -86,6 +103,7 @@ public class HerniPlan implements Subject {
 
     /**
      * Metoda rozhodne, jestli hrac muze jit domu
+     * @return 
      */
     public boolean muzeJitDomu(){
         return getBatoh().obsahujeVec("mec");
@@ -93,14 +111,26 @@ public class HerniPlan implements Subject {
 
     /**
      *  Metoda vrací odkaz na aktuální prostor, ve ktetém se hráč právě nachází.
+     * @return 
      */
+    
+    
 
+    public Hra getHra() {
+        return hra;
+    }
+
+    /**
+     *
+     * @return
+     */
     public Prostor getAktualniProstor() {
         return aktualniProstor;
     }
 
     /**
      *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
+     * @param prostor
      */
     public void setAktualniProstor(Prostor prostor) {
         aktualniProstor = prostor;
@@ -109,6 +139,7 @@ public class HerniPlan implements Subject {
 
     /**
      *  Metoda vrací počet zbývajících pokusů při odpovídání na otázku
+     * @return 
      */
     public int getPokus(){
         return pokus;
@@ -123,6 +154,7 @@ public class HerniPlan implements Subject {
 
     /**
      *  Metoda vrací vítězný prostor.
+     * @return 
      */
     public Prostor getViteznyProstor() {
         return viteznyProstor;
@@ -130,22 +162,34 @@ public class HerniPlan implements Subject {
 
     /**
      *  Metoda vrací odkaz na instanci batohu.
+     * @return 
      */
     public Batoh getBatoh() {
         return batoh;
     }
 
+    /**
+     *
+     * @param observer
+     */
     @Override
     public void registerObserver(Observer observer) {
     listObserveru.add(observer);
           
     }
 
+    /**
+     *
+     * @param observer
+     */
     @Override
     public void deleteObserver(Observer observer) {
        listObserveru.remove(observer);
     }
 
+    /**
+     *
+     */
     @Override
     public void notifyAllObservers() {
         for (Observer listObserveruItem : listObserveru){

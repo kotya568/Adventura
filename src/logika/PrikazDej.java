@@ -23,6 +23,7 @@ public class PrikazDej implements IPrikaz
 
     /**
      * Provádí příkaz dej. Zkouší dat věci, které jsou už vložené v batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {
@@ -57,7 +58,7 @@ public class PrikazDej implements IPrikaz
      */
     private String dort(){
         if(plan.getBatoh().obsahujeVec("dort")){
-            if (plan.getAktualniProstor().getNazev().equals("kralovsky_dvur") && !plan.princeznaJeZiva) {
+            if (plan.getAktualniProstor().getNazev().equals("kralovsky_dvur") && !plan.kralovnaJeZiva) {
                 return "Nikdo tu neni.";
             }
             plan.getBatoh().odeberVec("dort");
@@ -68,6 +69,7 @@ public class PrikazDej implements IPrikaz
 
     /**
      * Metoda zajišťuje, že věc lze dat pouze pokud je již v batohu
+     * @return 
      */
     public String jed(){
         if(plan.getBatoh().obsahujeVec("jed")){
@@ -78,12 +80,13 @@ public class PrikazDej implements IPrikaz
     
     /**
      * Metoda zajišťuje, že věc lze dat pouze pokud je již v batohu
+     * @return 
      */
     public String otraveny_dort(){
         if(plan.getBatoh().obsahujeVec("otraveny_dort")){
-            if (plan.getAktualniProstor().getNazev().equals("kralovsky_dvur") && plan.princeznaJeZiva) {
+            if (plan.getAktualniProstor().getNazev().equals("kralovsky_dvur") && plan.kralovnaJeZiva) {
                 plan.getBatoh().odeberVec("otraveny_dort");
-                plan.princeznaJeZiva = false;
+                plan.kralovnaJeZiva = false;
                 return "Dal jsi otraveny_dort princezne a ted je mrtva.";
             }
             return "Nikdo to nepotrebuje.";

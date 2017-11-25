@@ -4,9 +4,8 @@ package logika;
  *  Třída PrikazKombinuj implementuje pro hru příkaz kombinuj.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
- *  
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class PrikazKombinuj implements IPrikaz
 {
@@ -24,6 +23,7 @@ public class PrikazKombinuj implements IPrikaz
 
     /**
      * Provádí příkaz kombinuj. Zkouší kombinovat věci, které jsou už vložené v batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {
@@ -58,7 +58,7 @@ public class PrikazKombinuj implements IPrikaz
             if (vec1.equals("dort") && vec2.equals("jed") || vec2.equals("dort") && vec1.equals("jed")) {
                 plan.getBatoh().odeberVec("dort");
                 plan.getBatoh().odeberVec("jed");
-                plan.getBatoh().vlozVec(new Vec("otraveny_dort"));
+                plan.getBatoh().vlozVec(new Vec("otraveny_dort","otraveny_dort.jpg"));
                 return "Kombinace se provedna uspesne. Ted mas otraveny_dort ve svem batohu.";
             }
             return "Toto se nekombinuje.";

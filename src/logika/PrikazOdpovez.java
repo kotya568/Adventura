@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazOdpovez implementuje pro hru příkaz odpovez.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class PrikazOdpovez implements IPrikaz
 {
@@ -17,6 +17,7 @@ public class PrikazOdpovez implements IPrikaz
      *  Konstruktor třídy
      *  
      * @param plan herní plán, ve kterém se bude ve hře "odpovídat" 
+     * @param hra 
      */ 
     public PrikazOdpovez(HerniPlan plan, Hra hra)
     {
@@ -27,6 +28,7 @@ public class PrikazOdpovez implements IPrikaz
     /**
      * Metoda, která slouží k vyhodnocení, zda bylo na otázku odpovězeno ve správném prostoru a správně. Spravná odpoveď je pouze stin 
      * konec hry po třech pokusech. Odpoví-li hráč správně, pokracuje dal.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {
@@ -47,7 +49,7 @@ public class PrikazOdpovez implements IPrikaz
                         hra.setKonecHry(true);
                         return "Nemas dalsi pokusy. Prohrala jsi.";
                     }
-                    return "Straznik: Spatna odpoved, muzes hadat jeste " + (3 - plan.getPokus()) + "krat";
+                    return "Straznik: Spatna odpoved, muzes zkusit jeste jednou " + (3 - plan.getPokus()) + "krat";
                 }
             }
             else {

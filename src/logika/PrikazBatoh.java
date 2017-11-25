@@ -3,8 +3,8 @@ package logika;
 /**
  *  Třída PrikazBatoh implementuje pro hru příkaz batoh.
  *  Tato třída je součástí jednoduché textové hry.
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class PrikazBatoh implements IPrikaz
 {
@@ -23,6 +23,7 @@ public class PrikazBatoh implements IPrikaz
 
     /**
      * Metoda slouží pro vypsání obsahu kabelky po zadání příkazu batoh.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {

@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazSeber implementuje pro hru příkaz seber.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  *  
  */
 public class PrikazSeber implements IPrikaz
@@ -25,6 +25,7 @@ public class PrikazSeber implements IPrikaz
 
     /**
      * Provádí příkaz seber. Zkouší sebrat věci z prostoru a vkládá je do batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {

@@ -5,8 +5,12 @@
  */
 package main;
 
+import UI.MenuPole;
 import UI.Mapa;
 import UI.MenuPole;
+import UI.PanelBatohu;
+import UI.PanelVeci;
+import UI.PanelVychodu;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,30 +29,44 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logika.Hra;
 import logika.IHra;
-import uiText.TextoveRozhrani;
+import uText.TextoveRozhrani;
 
 /**
- *
- * @author xzenj02
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class Main extends Application {
 
     private Mapa mapa;
     private MenuPole menu;
+    private IHra hra;
+    private TextArea centerText;
+
+    /**
+     *
+     */
+    private PanelBatohu pBatoh;
+    private PanelVychodu pVychody;
+    private PanelVeci pVeci;
+    private Stage primaryStage;
     
+    /**
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
 
-        IHra hra = new Hra();
+        this.primaryStage = primaryStage;
+        hra = new Hra();
         mapa = new Mapa(hra);
-        menu = new MenuPole();
+        menu = new MenuPole(this);
         
         BorderPane borderPane = new BorderPane();
         
-        TextArea centerText = new TextArea();
+        centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
-        borderPane.setCenter(centerText);
         
         Label zadejPrikazLabel = new Label("Zadej prikaz");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
@@ -80,14 +98,22 @@ public class Main extends Application {
         dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
         
         
-        //panel prikaz
+        pBatoh = new PanelBatohu(hra.getHerniPlan(),centerText);
+        pVeci = new PanelVeci(hra.getHerniPlan(),centerText);
+        pVychody = new PanelVychodu(hra.getHerniPlan(),centerText,zadejPrikazTextField);
+        
+        BorderPane pomocny = new BorderPane();
+        pomocny.setLeft(pBatoh.getList());
+        pomocny.setCenter(pVychody.getList());
+        pomocny.setRight(pVeci.getList());
+        pomocny.setTop(mapa);
+        
+        borderPane.setCenter(pomocny);
         borderPane.setBottom(dolniPanel);
-        //obrazek s mapou
-        borderPane.setLeft(mapa);
-        //menu adventury
+        borderPane.setLeft(centerText);
         borderPane.setTop(menu);
         
-        Scene scene = new Scene(borderPane, 800, 650);
+        Scene scene = new Scene(borderPane, 1000, 650);
 
         primaryStage.setTitle("Moje Adventura");
         primaryStage.setScene(scene);
@@ -96,16 +122,14 @@ public class Main extends Application {
         zadejPrikazTextField.requestFocus();
     }
 
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        if(args.length == 0){
+        if (args.length == 0) {
             launch(args);
-        }
-        else {
-            if(args[0].equals("-text")) {
+        } else {
+            if (args[0].equals("-text")) {
                 IHra hra = new Hra();
                 TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
                 textoveRozhrani.hraj();
@@ -114,8 +138,20 @@ public class Main extends Application {
                 System.exit(1);
             }
         }
-        }
-        
-                      
     }
-    
+
+    /**
+     *Start
+     */
+    public void novaHra() {
+        start(primaryStage);
+    }
+
+    /**
+     * @return the primaryStage
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+}

@@ -4,8 +4,8 @@ package logika;
  *  Třída PrikazVyhod implementuje pro hru příkaz vyhod.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public class PrikazVyhod implements IPrikaz
 {
@@ -24,6 +24,7 @@ public class PrikazVyhod implements IPrikaz
 
     /**
      * Provádí příkaz vyhod. Zkouší vyhodit věc z batohu.
+     * @return 
      */
     @Override
     public String proved(String... parametry) {
@@ -33,8 +34,8 @@ public class PrikazVyhod implements IPrikaz
         }
         else {
             if(parametry.length == 1 && plan.getBatoh().obsahujeVec(parametry[0])){
-                plan.getBatoh().odeberVec(parametry[0]);
-                plan.getAktualniProstor().vlozVec(new Vec(parametry[0]));
+                Vec pomocna = plan.getBatoh().odeberVec(parametry[0]);
+                plan.getAktualniProstor().vlozVec(pomocna);
                 return "Vyhodila jsi vec z batohu "+ parametry[0] + ".";
             }
         }

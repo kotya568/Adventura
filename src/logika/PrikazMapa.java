@@ -12,11 +12,10 @@ import javax.swing.JLabel;
  *  Třída PrikazMapa implementuje pro hru příkaz mapa.
  *  Tato třída je součástí jednoduché textové hry.
  *  
- *  @author     Jekaterina Krivenchuk
- *  @version    pro školní rok 2016/2017
- *  
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
-class PrikazMapa implements IPrikaz {
+    public class PrikazMapa implements IPrikaz {
     private static final String NAZEV = "mapa";
     private SeznamPrikazu platnePrikazy;
 

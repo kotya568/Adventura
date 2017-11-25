@@ -6,11 +6,15 @@
 package utils;
 
 /**
- *
- * @author krij02
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
  */
 public interface Observer {
     
+    /**
+     *Aktualizuj
+     * Metoda se vola kdyz observer object byl zmenen 
+     */
     void update();
     
 }
