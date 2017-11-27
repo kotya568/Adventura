@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Map;
 import utils.Observer;
 import utils.Subject;
+<<<<<<< HEAD
+=======
+import utils.ObserverBatoh;
+import utils.ObserverProstor;
+import utils.SubjektBatoh;
+import utils.SubjektProstor;
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 /**
  *  Trida HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -17,7 +24,11 @@ import utils.Subject;
  * @author     Jekaterina Krivenchuk
  * @version    ZS 2017
  */
+<<<<<<< HEAD
 public class HerniPlan implements Subject{
+=======
+public class HerniPlan implements Subject,SubjektProstor, SubjektBatoh {
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     
     private Prostor aktualniProstor;
     private Prostor viteznyProstor;
@@ -44,6 +55,9 @@ public class HerniPlan implements Subject{
      *
      */
     protected boolean dostalJed = false;
+   
+    private List <ObserverProstor> pozorovateleProstoru;
+    private List <ObserverBatoh> pozorovateleBatohu;
 
     
     /**
@@ -67,11 +81,19 @@ public class HerniPlan implements Subject{
         // vytvářejí se jednotlivé prostory
         Prostor kralovsky_dvur = new Prostor("kralovsky_dvur", "Hezky zamek a kralovna", 120 ,200);
         mapa.put("kralovsky_dvur", kralovsky_dvur);
+<<<<<<< HEAD
         Prostor vezeni = new Prostor("vezeni", "Strasne a mokre vezeni, ktere dohlida straznik", 220 ,300);
+=======
+        Prostor vezeni = new Prostor("vezeni", "Strasne a mokre vezeni, ktere dohlida straznik", 15 ,74);
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         mapa.put("vezeni", vezeni);
         Prostor les = new Prostor("les","Les, ve kterem bydli carodejnce",300 ,200);
         mapa.put("les", les);
+<<<<<<< HEAD
         Prostor dum = new Prostor("dum","Tvuj rodny domov, ktery je zachycen bilymi chodci",450 ,50);  
+=======
+        Prostor dum = new Prostor("dum","Tvuj rodny domov, ktery je zachycen bilymi chodci",97,40);  
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         mapa.put("dum", dum);  
         Prostor jeskyne = new Prostor("jeskyne","Tady sidli matka ",450 ,200);
         mapa.put("jeskyne", jeskyne);
@@ -195,6 +217,56 @@ public class HerniPlan implements Subject{
         for (Observer listObserveruItem : listObserveru){
          listObserveruItem.update();
         }
+    }
+
+    
+    /**
+     * Metoda zaregistruje pozorovatele prostoru.
+     * @param observer
+     */
+    @Override
+    public void zaregistrujPozorovatele(ObserverProstor observer) {
+        pozorovateleProstoru.add(observer);
+    }
+    
+    /**
+     * Metoda odregistruje pozorovatele prostoru.
+     * @param observer
+     */
+    @Override
+    public void odregistrujPozorovatele(ObserverProstor observer) {
+       pozorovateleProstoru.remove(observer);
+    }
+    
+    /**
+     * Metoda upozorní .
+     */
+    @Override
+    public void upozorniPozorovatele() {
+        for(ObserverProstor pozorovatel:pozorovateleProstoru){
+            pozorovatel.update();
+        }
+        for(ObserverBatoh pozorovatel: pozorovateleBatohu){
+            pozorovatel.update();
+        }
+    }
+    
+    /**
+     * Metoda zaregistruje  batohu.
+     * @param observer
+     */
+     @Override
+    public void zaregistrujPozorovatele(ObserverBatoh observer) {
+        pozorovateleBatohu.add(observer);
+    }
+    
+    /**
+     * Metoda odregistruje  batohu.
+     * @param observer
+     */
+    @Override
+    public void odregistrujPozorovatele(ObserverBatoh observer) {
+        pozorovateleBatohu.remove(observer);
     }
 
 }

@@ -24,7 +24,11 @@ public interface Subject {
     void deleteObserver (Observer observer);
     
     /**
+<<<<<<< HEAD
      *Upozorni všechny pozorovatele
+=======
+     *
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
      */
     void notifyAllObservers ();
     

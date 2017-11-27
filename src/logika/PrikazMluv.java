@@ -58,7 +58,11 @@ public class PrikazMluv implements IPrikaz
             else {
                 if (plan.state == State.PrisonBreak) {
                     plan.state = State.MecVJeskyni;
+<<<<<<< HEAD
                     plan.getProstor("jeskyne").vlozVec(new Vec("mec","mec.jpg"));
+=======
+                    plan.getProstor("jeskyne").vlozVec(new Vec("mec"));
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
                     return "Carodejnice: Vitam zpatky. Zabil sis kralovnu ? Dobra prace!\n" +
                         "Ted ti povim, kde v jeskyni je schovan mec, kterym se da zabit bile chodci.";
                 }

@@ -265,11 +265,16 @@ public class Prostor implements ISeznamVeci {
     public double getPosY() {
         return posY;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     /**
      *
      * @return
      */
+<<<<<<< HEAD
     public String seznamVychodu() 
     {
         String vracenyText = "vychody:";
@@ -289,12 +294,21 @@ public class Prostor implements ISeznamVeci {
      }
     
     
+=======
+    public Double getY() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 
     /**
      *
      * @return
      */
+<<<<<<< HEAD
     public Double getY() {
+=======
+    public Double getX() {
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -302,8 +316,14 @@ public class Prostor implements ISeznamVeci {
      *
      * @return
      */
+<<<<<<< HEAD
     public Double getX() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+=======
+    public Object getVeci() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 }

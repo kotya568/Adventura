@@ -5,6 +5,7 @@
  */
 package UI;
 
+<<<<<<< HEAD
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -48,10 +49,54 @@ public class PanelVychodu implements Observer
 
     private void init()
       {
+=======
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import logika.HerniPlan;
+import logika.Prostor;
+import utils.ObserverProstor;
+
+/**
+ * @author     Jekaterina Krivenchuk
+ * @version    ZS 2017
+ */
+public class PanelVychodu implements ObserverProstor {
+    
+    private HerniPlan plan;
+    private ListView<String> list;
+    private ObservableList<String> data;
+    
+    /**
+     *
+     * @param plan
+     */
+    public PanelVychodu(HerniPlan plan){
+        this.plan = plan;
+        plan.zaregistrujPozorovatele(this);
+        init();
+        
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void update() {
+        List<Prostor> vychody = new ArrayList<>(plan.getAktualniProstor().getVychody());
+        data.clear();
+        vychody.stream().forEach(i->data.add(i.getNazev()));
+    }
+
+    private void init() {
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         list = new ListView<>();
         data = FXCollections.observableArrayList();
         list.setItems(data);
         list.setPrefWidth(100);
+<<<<<<< HEAD
         
         list.setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
@@ -79,10 +124,16 @@ public class PanelVychodu implements Observer
         update();
       }
 
+=======
+        update();
+        }
+    
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     /**
      *
      * @return
      */
+<<<<<<< HEAD
     public ListView<String> getList()
       {
         return list;
@@ -98,6 +149,11 @@ public class PanelVychodu implements Observer
             data.add(oddeleneVychody[i]);
         }
       }
+=======
+    public ListView getList(){
+        return list;
+    }
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     
     /**
      * Metoda zaregistruje pozorovatele k hernímu plánu při spuštění nové hry.
@@ -105,9 +161,15 @@ public class PanelVychodu implements Observer
      */
     public void nastaveniHernihoPlanu (HerniPlan plan){
         this.plan = plan;
+<<<<<<< HEAD
         plan.registerObserver(this);
         this.update();
     }
 
 
+=======
+        plan.zaregistrujPozorovatele(this);
+        this.update();
+    }
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 }

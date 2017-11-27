@@ -3,11 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/Adventura/src/utils/Observer.java</file>
             <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/Adventura/src/utils/Subject.java</file>
             <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/Adventura/src/zdroje/mapa.jpg</file>
             <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/Adventura/src/main/Main.java</file>
             <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/Adventura/src/UI/MenuPole.java</file>
+=======
+            <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/src/logika/Hra.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/src/logika/SeznamPrikazu.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/src/logika/ISeznamVeci.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/GitHub/Adventura/src/logika/HerniPlan.java</file>
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         </group>
     </open-files>
 </project-private>

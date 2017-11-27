@@ -12,8 +12,12 @@ package utils;
 public interface Observer {
     
     /**
+<<<<<<< HEAD
      *Aktualizuj
      * Metoda se vola kdyz observer object byl zmenen 
+=======
+     *
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
      */
     void update();
     

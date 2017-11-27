@@ -5,6 +5,11 @@
  */
 package main;
 
+<<<<<<< HEAD
+=======
+import UI.OknoBatoh;
+import UI.OknoProstor;
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 import UI.MenuPole;
 import UI.Mapa;
 import UI.MenuPole;
@@ -45,9 +50,14 @@ public class Main extends Application {
     /**
      *
      */
+<<<<<<< HEAD
     private PanelBatohu pBatoh;
     private PanelVychodu pVychody;
     private PanelVeci pVeci;
+=======
+    public OknoProstor oknoProstor;
+    private OknoBatoh oknoBatoh;
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     private Stage primaryStage;
     
     /**
@@ -64,6 +74,12 @@ public class Main extends Application {
         
         BorderPane borderPane = new BorderPane();
         
+<<<<<<< HEAD
+=======
+        oknoProstor = new OknoProstor(hra.getHerniPlan());
+        oknoBatoh = new OknoBatoh(hra.getHerniPlan().getBatoh(), hra.getHerniPlan());
+        
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
         centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
@@ -141,10 +157,20 @@ public class Main extends Application {
     }
 
     /**
+<<<<<<< HEAD
      *Start
      */
     public void novaHra() {
         start(primaryStage);
+=======
+     *
+     */
+    public void novaHra() {
+        hra = new Hra();
+        centerText.setText(hra.vratUvitani());
+        //to same pro vsechny observery
+        mapa.novaHra(hra);
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
     }
 
     /**

@@ -13,6 +13,7 @@ import javafx.scene.shape.Circle;
 import logika.IHra;
 import main.Main;
 import utils.Observer;
+import utils.ObserverNovaHra;
 
 /**
  *

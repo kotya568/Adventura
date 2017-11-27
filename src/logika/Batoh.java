@@ -4,6 +4,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import utils.SubjektProstor;
+import utils.SubjektBatoh;
 
 /*******************************************************************************
  * Třída Batoh - popisuje batoh.
@@ -121,5 +123,16 @@ public class Batoh implements ISeznamVeci
         return null;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     *
+     * @return
+     */
+    public Object getVeci() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+>>>>>>> 48f6d711570cbdf19daa560979a04daf86a7b8f5
 
 }
